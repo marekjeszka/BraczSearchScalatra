@@ -25,4 +25,3 @@ libraryDependencies ++= Seq(
 
 enablePlugins(SbtTwirl)
 enablePlugins(ScalatraPlugin)
-enablePlugins(LinuxPlugin)
