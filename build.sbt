@@ -13,7 +13,9 @@ resolvers += Classpaths.typesafeReleases
 
 libraryDependencies ++= Seq(
   "net.ruippeixotog" %% "scala-scraper" % "2.1.0",
-  "org.scalatra" %% "scalatra" % ScalatraVersion,
+  "org.scalatra" %% "scalatra" % ScalatraVersion excludeAll(
+    ExclusionRule("org.apache.commons", "commons-lang3"),
+    ExclusionRule("org.slf4j", "slf4j-api")),
   "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime",
   "org.eclipse.jetty" % "jetty-webapp" % "9.4.9.v20180320" % "container",
