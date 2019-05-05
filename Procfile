@@ -1,0 +1,1 @@
+web: sbt jetty:start
