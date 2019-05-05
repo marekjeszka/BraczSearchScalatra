@@ -26,12 +26,25 @@
         req.open(method, link, true);
         req.onload = function(e) {
             document.getElementById('response').innerHTML = req.responseText;
-            parseHistory();
             linksForBooks();
             showLoader(false);
         }
         showLoader(true);
         req.send(body);
+    }
+    function linksForBooks() {
+        var ul = document.getElementById('books');
+        if (ul) {
+            var books = ul.getElementsByTagName('li');
+            for (var i = 0; i < books.length; ++i) {
+                books[i].onclick = function(e) {
+                    var bookLink = this.getElementsByTagName('p')[0].textContent;
+                    if (bookLink) {
+                        loadBookLocations('/searchByLink/', 'POST', bookLink);
+                    }
+                }
+            }
+        }
     }
   </script>
 </div>
