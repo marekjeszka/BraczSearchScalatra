@@ -1,6 +1,6 @@
 package controller
 
-import catalog.{Book, BookSearcher, IncorrectISBN}
+import catalog.{Book, BookLocator, BookSearcher, IncorrectISBN}
 import org.mockito.ArgumentMatchers._
 import org.mockito.Mockito._
 import org.scalatest.mockito.MockitoSugar
@@ -9,8 +9,9 @@ import org.scalatra.test.scalatest._
 class HomeServletTest extends ScalatraFunSuite with MockitoSugar {
 
   private val bookSearcherMock = mock[BookSearcher]
+  private val bookLocatorMock = mock[BookLocator]
 
-  addServlet(new HomeServlet(bookSearcherMock), "/*")
+  addServlet(new HomeServlet(bookSearcherMock, bookLocatorMock), "/*")
 
   test("GET / on HomeServlet should return status 200") {
     get("/") {

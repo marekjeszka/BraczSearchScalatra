@@ -16,6 +16,7 @@ libraryDependencies ++= Seq(
   "org.scalatra" %% "scalatra" % ScalatraVersion excludeAll(
     ExclusionRule("org.apache.commons", "commons-lang3"),
     ExclusionRule("org.slf4j", "slf4j-api")),
+  "com.typesafe" % "config" % "1.3.4",
   "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime",
   "org.eclipse.jetty" % "jetty-webapp" % "9.4.9.v20180320" % "container",

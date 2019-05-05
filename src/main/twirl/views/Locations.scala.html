@@ -1,0 +1,37 @@
+@(locations: catalog.CatalogResult, bookName: Option[String])
+
+<div class="container">
+@if(locations.available.isEmpty && locations.taken.isEmpty && locations.incomplete.isEmpty) {
+    <p>Nothing found
+    @if(bookName.isDefined) {
+        for: <b>@bookName.get</b>
+    }
+    </p>
+} else {
+    @if(locations.available.nonEmpty) {
+        <p class="alert alert-success"><b>@bookName.getOrElse("This book")</b> is available at:</p>
+        <ul>
+        @for(p <- locations.available) {
+            <li>@p.address</li>
+        }
+    }
+    </ul>
+    @if(locations.taken.nonEmpty) {
+        <p class="alert alert-warning"><b>@bookName.getOrElse("This book")</b> will be available at:</p>
+        <ul>
+            @for(p <- locations.taken) {
+            <li>@p.address, on @catalog.FutureBookLocation.dateAsString(p.returnDate)</li>
+            }
+        </ul>
+    }
+    @if(locations.incomplete.nonEmpty) {
+    <p class="alert alert-info">Other locations:</p>
+    <ul>
+        @for(p <- locations.incomplete) {
+        <li>@p.address</li>
+        }
+    </ul>
+    }
+    <small>Used <a target="_blank" href=@locations.link>link</a></small>
+}
+</div>

@@ -40,7 +40,7 @@
                 books[i].onclick = function(e) {
                     var bookLink = this.getElementsByTagName('p')[0].textContent;
                     if (bookLink) {
-                        loadBookLocations('/searchByLink/', 'POST', bookLink);
+                        loadBookLocations('/searchByLink', 'POST', bookLink);
                     }
                 }
             }

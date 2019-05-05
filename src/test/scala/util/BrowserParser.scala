@@ -1,4 +1,4 @@
-package catalog
+package util
 
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._

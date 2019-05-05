@@ -1,5 +1,6 @@
 package catalog
 
+import com.typesafe.config.ConfigFactory
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import net.ruippeixotog.scalascraper.dsl.DSL._
 import net.ruippeixotog.scalascraper.model.Element
@@ -7,8 +8,7 @@ import net.ruippeixotog.scalascraper.scraper.ContentExtractors.elementList
 
 class BookSearcher(browser: JsoupBrowser) extends Browser[Book] {
 
-  override protected val catalogLink: String =
-    "http://br-hip.pfsl.poznan.pl/ipac20/ipac.jsp?menu=search&aspect=subtab24&npp=10&ipp=50&spp=20&profile=br-mar&ri=&index=ALTITLE&term=%s&aspect=subtab24"
+  override protected val catalogLink: String = ConfigFactory.load().getString("braczsearch.searchlink")
 
   override protected def getBrowser: JsoupBrowser = browser
 

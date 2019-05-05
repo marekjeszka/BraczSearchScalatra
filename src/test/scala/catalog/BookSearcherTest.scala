@@ -2,6 +2,7 @@ package catalog
 
 import net.ruippeixotog.scalascraper.browser.JsoupBrowser
 import org.scalatra.test.scalatest.ScalatraFunSuite
+import util.BrowserParser
 
 class BookSearcherTest extends ScalatraFunSuite with BrowserParser {
 
