@@ -12,6 +12,7 @@ scalaVersion := "2.12.6"
 resolvers += Classpaths.typesafeReleases
 
 libraryDependencies ++= Seq(
+  "net.ruippeixotog" %% "scala-scraper" % "2.1.0",
   "org.scalatra" %% "scalatra" % ScalatraVersion,
   "org.scalatra" %% "scalatra-scalatest" % ScalatraVersion % "test",
   "ch.qos.logback" % "logback-classic" % "1.2.3" % "runtime",
@@ -21,5 +22,3 @@ libraryDependencies ++= Seq(
 
 enablePlugins(SbtTwirl)
 enablePlugins(ScalatraPlugin)
-
-herokuAppName in Compile := "powerful-depths-64600"

@@ -1,0 +1,38 @@
+@()
+@Main(title = "Catalog search") {
+<div class="container">
+  <h1>Biblioteka Raczynskich</h1>
+  <p>
+    <input id="inputText" type="text" name="isbn" class="form-control" placeholder="ISBN or book name">
+    <button id="searchIsbn" type="submit" class="btn btn-default">Search</button>
+  </p>
+  <div id="pleaseWait" class="loader" style="display: none;"></div>
+  <p id="response"></p>
+  <hr>
+  <script>
+    function showLoader(visible) {
+        document.getElementById('pleaseWait').style = visible ? "display: inline-block;" : "display: none;";
+    }
+    $("#inputText").keyup(function(event){
+        if(event.keyCode == 13){
+            $("#searchIsbn").click();
+        }
+    });
+    $('#searchIsbn').click(function(){
+        loadBookLocations('/search/' + document.getElementById('inputText').value, 'GET', null);
+    });
+    function loadBookLocations(link, method, body) {
+        var req = new XMLHttpRequest();
+        req.open(method, link, true);
+        req.onload = function(e) {
+            document.getElementById('response').innerHTML = req.responseText;
+            parseHistory();
+            linksForBooks();
+            showLoader(false);
+        }
+        showLoader(true);
+        req.send(body);
+    }
+  </script>
+</div>
+}

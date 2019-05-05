@@ -1,0 +1,14 @@
+@(books: Seq[catalog.Book])
+
+<div class="container">
+@if(books.isEmpty) {
+    <p>Nothing found</p>
+} else {
+    <p>Select one of books:</p>
+    <ul id="books" class="list-group">
+        @for(b <- books) {
+        <li class="list-group-item"><a href="#">@b.title @b.author @b.year</a><p hidden>@b.link</p></li>
+        }
+    </ul>
+}
+</div>
